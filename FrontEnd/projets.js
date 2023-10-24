@@ -33,4 +33,4 @@ function addToHTML(data) {
 }
 
 // Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML
-// getData().then(data => addToHTML(data));
+getData().then(data => addToHTML(data));
