@@ -47,12 +47,18 @@ function addToHTML(data, categorie) {
   });
 }
 
-
 // Fonction pour créer les boutons de filtre
 function createFilterButtons(data) {
   // Obtenir toutes les catégories uniques
   let categories = [...new Set(data.map(item => item.category.name))];
-
+  // Créer un bouton "Tous"
+let allButton = document.createElement('button');
+allButton.textContent = 'Tous';
+allButton.addEventListener('click', () => {
+  gallery.innerHTML = '';
+  addToHTML(data); // Affiche toutes les catégories
+});
+buttonContainer.appendChild(allButton);
   // Créer un bouton pour chaque catégorie
   categories.forEach(categorie => {
     
@@ -64,6 +70,7 @@ function createFilterButtons(data) {
     });
     buttonContainer.appendChild(button);
   });
+  
 }
 
 // Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML et createFilterButtons
@@ -71,8 +78,3 @@ getData().then(data => {
   addToHTML(data);
   createFilterButtons(data);
 });
-// ------------------------- filtre objet ---------------------//
-
-// --------------------- filtre Appartement -------------------//
-
-// ------------------ filtre hotel et restaurant --------------//
