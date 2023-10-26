@@ -1,9 +1,15 @@
-// ------------------- test -----------------//
+// sékection de projet dans le DOM
+let projets = document.querySelector('#portfolio h2');
 // Sélection de la galerie dans le DOM
 let gallery = document.querySelector('.gallery');
 
 // Suppression du contenu HTML existant dans la galerie
 gallery.innerHTML = '';
+
+let buttonContainer = document.createElement('div');
+buttonContainer.className = 'button-container';
+projets.appendChild(buttonContainer);
+
 
 // Fonction pour récupérer les données de l'API
 async function getData() {
@@ -41,6 +47,7 @@ function addToHTML(data, categorie) {
   });
 }
 
+
 // Fonction pour créer les boutons de filtre
 function createFilterButtons(data) {
   // Obtenir toutes les catégories uniques
@@ -48,13 +55,14 @@ function createFilterButtons(data) {
 
   // Créer un bouton pour chaque catégorie
   categories.forEach(categorie => {
+    
     let button = document.createElement('button');
     button.textContent = categorie;
     button.addEventListener('click', () => {
       gallery.innerHTML = '';
       addToHTML(data, categorie);
     });
-    gallery.appendChild(button);
+    buttonContainer.appendChild(button);
   });
 }
 
