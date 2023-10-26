@@ -44,6 +44,37 @@ getData().then(data => addToHTML(data));
 
 // ------------------------- filtre objet ---------------------//
 
+// Fonction pour ajouter les images et descriptions à index.html
+function addToHTML(data, categorie) {
+    // Filtrer les données par catégorie
+    let filteredData = data;
+    if (categorie) {
+      filteredData = data.filter(item => item.category.name === categorie);
+    }
+  
+    // Ajouter chaque élément filtré au HTML
+    filteredData.forEach(item => {
+  
+           // Créer un nouvel élément figure
+           const figure = document.createElement('figure');
+  
+           // Ajouter une image à la figure
+           const img = document.createElement('img');
+           img.src = item.imageUrl; // 
+           figure.appendChild(img);
+     
+           // Ajouter une description à la figure
+           const description = document.createElement('figcaption');
+           description.textContent = item.title; // 
+           figure.appendChild(description);
+     
+           // Ajouter la figure au conteneur gallery
+           gallery.appendChild(figure);
+    });
+  }
+  
+  // Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML
+  getData().then(data => addToHTML(data, 'Objets'));
 // --------------------- filtre Appartement -------------------//
 
 // ------------------ filtre hotel et restaurant --------------//
