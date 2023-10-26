@@ -1,4 +1,11 @@
-// sékection de projet dans le DOM
+// --------------- Chargement du contenu -----------//
+//test
+let submitButton = document.querySelector('input[type=submit]');
+
+let submitButtonStyle = window.getComputedStyle(submitButton);
+
+
+// Sélection de projet dans le DOM
 let projets = document.querySelector('#portfolio h2');
 // Sélection de la galerie dans le DOM
 let gallery = document.querySelector('.gallery');
@@ -6,10 +13,11 @@ let gallery = document.querySelector('.gallery');
 // Suppression du contenu HTML existant dans la galerie
 gallery.innerHTML = '';
 
+// créations de la div contenant les boutons
 let buttonContainer = document.createElement('div');
 buttonContainer.className = 'button-container';
+buttonContainer.style.flexDirection = 'row';
 projets.appendChild(buttonContainer);
-
 
 // Fonction pour récupérer les données de l'API
 async function getData() {
@@ -47,16 +55,23 @@ function addToHTML(data, categorie) {
   });
 }
 
+//------------------ boutons filtres ---------------//
+
 // Fonction pour créer les boutons de filtre
 function createFilterButtons(data) {
   // Obtenir toutes les catégories uniques
   let categories = [...new Set(data.map(item => item.category.name))];
   // Créer un bouton "Tous"
-let allButton = document.createElement('button');
-allButton.textContent = 'Tous';
-allButton.addEventListener('click', () => {
-  gallery.innerHTML = '';
-  addToHTML(data); // Affiche toutes les catégories
+  let allButton = document.createElement('button');
+  allButton.textContent = 'Tous';
+  // récupération de certains visuels du submit "Envoyer" //
+  for (let property of submitButtonStyle) {
+    allButton.style.setProperty(property, submitButtonStyle.getPropertyValue(property));
+}
+    // fin des récupérations//
+  allButton.addEventListener('click', () => {
+    gallery.innerHTML = '';
+    addToHTML(data); // Affiche toutes les catégories
 });
 buttonContainer.appendChild(allButton);
   // Créer un bouton pour chaque catégorie
@@ -64,13 +79,17 @@ buttonContainer.appendChild(allButton);
     
     let button = document.createElement('button');
     button.textContent = categorie;
+    // récupération de certains visuels du submit "Envoyer" //
+    for (let property of submitButtonStyle) {
+      button.style.setProperty(property, submitButtonStyle.getPropertyValue(property));
+  }
+      // fin des récupérations//&
     button.addEventListener('click', () => {
       gallery.innerHTML = '';
       addToHTML(data, categorie);
     });
     buttonContainer.appendChild(button);
   });
-  
 }
 
 // Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML et createFilterButtons
