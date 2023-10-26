@@ -66,34 +66,41 @@ function createFilterButtons(data) {
   // récupération de certains visuels du submit "Envoyer" //
   for (let property of submitButtonStyle) {
     allButton.style.setProperty(property, submitButtonStyle.getPropertyValue(property));
-  }
+  };
   // modification style boutons filtrés //
-  allButton.style.margin = '51px 0';
-  allButton.style.padding = '9px';   
+  allButton.style.margin = '0';
+  allButton.style.padding = '0';   
 
   allButton.addEventListener('click', () => {
     gallery.innerHTML = '';
     addToHTML(data); // Affiche toutes les catégories
 });
+
 buttonContainer.appendChild(allButton);
-  //modification style container boutons //
-  buttonContainer.style.display = 'flex';
-  buttonContainer.style.justifyContent = 'center';
-  buttonContainer.style.gap = '10px';
+
+//modification style container boutons //
+buttonContainer.style.display = 'flex';
+buttonContainer.style.justifyContent = 'center';
+buttonContainer.style.gap = '10px';
+buttonContainer.style.margin = '50px'
 
   // Créer un bouton pour chaque catégorie
   categories.forEach(categorie => {
     
     let button = document.createElement('button');
     button.textContent = categorie;
-    // récupération de certains visuels du submit "Envoyer" //
-    for (let property of submitButtonStyle) {
-      button.style.setProperty(property, submitButtonStyle.getPropertyValue(property));
-    }
-    // modification style boutons filtrés //
-    button.style.margin = '51px 0';
-    button.style.padding = '9px';
 
+    // modification style boutons filtrés //
+    button.style.margin = '0';
+    button.style.padding = '0 19px';
+    button.style.borderRadius = '60px';
+    // modification couleur bouton 
+    button.style.borderColor = 'var(--green-color)';
+    button.style.color = 'var(--green-color)';
+    button.style.backgroundColor = 'white';
+    button.style.fontFamily = 'Syne';
+    button.style.fontWeight = '700';
+   
     button.addEventListener('click', () => {
       gallery.innerHTML = '';
       addToHTML(data, categorie);
@@ -102,7 +109,8 @@ buttonContainer.appendChild(allButton);
   });
 }
 
-// Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML et createFilterButtons
+// Appel de la fonction getData et utilisation des données reçues 
+// pour appeler addToHTML  et createFilterButtons
 getData().then(data => {
   addToHTML(data);
   createFilterButtons(data);
