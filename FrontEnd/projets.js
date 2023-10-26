@@ -16,7 +16,6 @@ gallery.innerHTML = '';
 // créations de la div contenant les boutons
 let buttonContainer = document.createElement('div');
 buttonContainer.className = 'button-container';
-buttonContainer.style.flexDirection = 'row';
 projets.appendChild(buttonContainer);
 
 // Fonction pour récupérer les données de l'API
@@ -67,13 +66,21 @@ function createFilterButtons(data) {
   // récupération de certains visuels du submit "Envoyer" //
   for (let property of submitButtonStyle) {
     allButton.style.setProperty(property, submitButtonStyle.getPropertyValue(property));
-}
-    // fin des récupérations//
+  }
+  // modification style boutons filtrés //
+  allButton.style.margin = '51px 0';
+  allButton.style.padding = '9px';   
+
   allButton.addEventListener('click', () => {
     gallery.innerHTML = '';
     addToHTML(data); // Affiche toutes les catégories
 });
 buttonContainer.appendChild(allButton);
+  //modification style container boutons //
+  buttonContainer.style.display = 'flex';
+  buttonContainer.style.justifyContent = 'center';
+  buttonContainer.style.gap = '10px';
+
   // Créer un bouton pour chaque catégorie
   categories.forEach(categorie => {
     
@@ -82,8 +89,11 @@ buttonContainer.appendChild(allButton);
     // récupération de certains visuels du submit "Envoyer" //
     for (let property of submitButtonStyle) {
       button.style.setProperty(property, submitButtonStyle.getPropertyValue(property));
-  }
-      // fin des récupérations//&
+    }
+    // modification style boutons filtrés //
+    button.style.margin = '51px 0';
+    button.style.padding = '9px';
+
     button.addEventListener('click', () => {
       gallery.innerHTML = '';
       addToHTML(data, categorie);
