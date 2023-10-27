@@ -1,5 +1,4 @@
 // --------------- Chargement du contenu -----------//
-//test
 let submitButton = document.querySelector('input[type=submit]');
 
 let submitButtonStyle = window.getComputedStyle(submitButton);
@@ -74,39 +73,55 @@ function createFilterButtons(data) {
   allButton.addEventListener('click', () => {
     gallery.innerHTML = '';
     addToHTML(data); // Affiche toutes les catégories
-});
+  });
 
-buttonContainer.appendChild(allButton);
+  buttonContainer.appendChild(allButton);
 
-//modification style container boutons //
-buttonContainer.style.display = 'flex';
-buttonContainer.style.justifyContent = 'center';
-buttonContainer.style.gap = '10px';
-buttonContainer.style.margin = '50px'
+  //modification style container boutons //
+  buttonContainer.style.display = 'flex';
+  buttonContainer.style.justifyContent = 'center';
+  buttonContainer.style.gap = '10px';
+  buttonContainer.style.margin = '50px'
 
   // Créer un bouton pour chaque catégorie
   categories.forEach(categorie => {
     
-    let button = document.createElement('button');
-    button.textContent = categorie;
+  let button = document.createElement('button');
+  button.textContent = categorie;
 
-    // modification style boutons filtrés //
-    button.style.margin = '0';
-    button.style.padding = '0 19px';
-    button.style.borderRadius = '60px';
-    // modification couleur bouton 
-    button.style.borderColor = 'var(--green-color)';
-    button.style.color = 'var(--green-color)';
-    button.style.backgroundColor = 'white';
-    button.style.fontFamily = 'Syne';
-    button.style.fontWeight = '700';
-   
-    button.addEventListener('click', () => {
-      gallery.innerHTML = '';
-      addToHTML(data, categorie);
-    });
-    buttonContainer.appendChild(button);
+  // modification style boutons filtrés //
+  button.style.margin = '0';
+  button.style.padding = '0 19px';
+  button.style.borderRadius = '60px';
+  // modification couleur bouton 
+  button.style.borderColor = 'var(--green-color)';
+  button.style.color = 'var(--green-color)';
+  button.style.backgroundColor = 'white';
+  button.style.fontFamily = 'Syne';
+  button.style.fontWeight = '700';
+  
+
+  // conservation du changement de couleur
+  let clicked = false; // variable pour stocker l'état du bouton
+
+  button.addEventListener('click', function() {
+    clicked = !clicked; // change l'état du bouton à chaque clic
+    if (clicked) {
+      this.style.backgroundColor = 'var(--green-color)'; // backgroundcolor lors du clic
+      this.style.color = 'white';
+    } else {
+      this.style.backgroundColor = 'white'; // couleur originale du bouton
+      this.style.color = 'var(--green-color)';
+    };
   });
+
+  button.addEventListener('click', () => {
+    gallery.innerHTML = '';
+    addToHTML(data, categorie);
+    });
+  buttonContainer.appendChild(button);
+  });
+
 }
 
 // Appel de la fonction getData et utilisation des données reçues 
