@@ -192,3 +192,30 @@ footer nav ul {
 	margin: 2em
 }
 
+/** partie boutons ***/
+/** before **/
+button {
+	font-family: 'Syne';
+	font-weight: 700;
+	min-width: 100px;
+	margin: 10px;
+	padding: 10px 19px;
+	border-radius: 60px;
+	background-color: white;
+	color: var(--green-color);
+}
+
+div button {
+	gap: 10px;
+	margin-top: 50px;
+}
+/** séléction **/
+button:hover {
+	background-color: var(--green-color);
+	color:white;
+}
+/** fous sur l'un **/
+button:focus {
+	background-color: var(--green-color);
+	color: white;
+}
