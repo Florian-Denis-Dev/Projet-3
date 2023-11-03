@@ -93,17 +93,23 @@ h2{
 nav ul {
 	display: flex;
 	align-items: center;
-	list-style-type: none;
-
+	
+	
 }
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
 
-li:hover {
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
 	color: var(--brown-color);
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -209,13 +215,14 @@ div button {
 	gap: 10px;
 	margin-top: 50px;
 }
-/** séléction **/
+/** sélection **/
 button:hover {
 	background-color: var(--green-color);
 	color:white;
 }
-/** fous sur l'un **/
+/** focus sur l'un **/
 button:focus {
 	background-color: var(--green-color);
 	color: white;
 }
+
