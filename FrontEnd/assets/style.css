@@ -276,7 +276,7 @@ button:focus {
 	align-self: end;
 	padding: 10px;
 }
-#gallery-modification{
+.title{
 	text-align: center;
 	font-family: 'Work Sans';
 	font-size: 26px;
@@ -292,4 +292,14 @@ button:focus {
 }
 .modification {
 	display: none;
+}
+/*** style box pop-up ***/
+#gallery-modification {
+	max-width: 420px;
+	margin: 67px;
+}
+#gallery-modification img{
+width: 78px;
+margin: 3px;
+align-items: flex-start;
 }

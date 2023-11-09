@@ -27,7 +27,6 @@ function addToHTML(data) {
       // Ajouter une image 
       const img = document.createElement('img');
       img.src = item.imageUrl;
-      img.style.width = '78px';
       modification.appendChild(img);
   });
 }
