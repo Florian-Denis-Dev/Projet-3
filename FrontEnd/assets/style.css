@@ -228,6 +228,7 @@ button:focus {
 
 /** mode edition **/
 .editor {
+	box-sizing: border-box;
 	background-color: black;
 	color: white;
 	display: flex;
