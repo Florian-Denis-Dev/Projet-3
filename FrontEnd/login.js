@@ -15,10 +15,6 @@ async function login() {
     if (response.ok) {
       const res = await response.json();
       window.localStorage.setItem("token", res.token);
-      const edition = document.querySelectorAll('.edition');
-      edition.forEach((element) => {
-        element.style.display = 'unset';
-      });       
       window.location.replace("index.html");
     } else {
       alert('Erreur dans le mail ou le mot de passe');

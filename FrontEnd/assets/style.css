@@ -227,27 +227,39 @@ button:focus {
 }
 
 /** mode edition **/
+.userLogged {
+	padding-top: 50px;
+}
+
 .editor {
 	box-sizing: border-box;
 	background-color: black;
 	color: white;
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
 	font-size: 16px;
 	gap: 15px
 }
+.userLogged .editor {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
 .modifier {
-	display: inline;
+	display: none;
 	text-align: center;
 	font-family: 'Work Sans';
 	font-size: 14px;
 	font-weight: 400;
 	color: black;
 }
-.edition {
-	display: none;
+
+.userLogged .modifier {
+	display: inline;
 }
 
 /** modifier les images **/
