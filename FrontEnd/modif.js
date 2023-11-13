@@ -19,7 +19,12 @@ window.addEventListener('keydown', function(event) {
 });
 
 //*** fermeture de la pop-up en cliquant sur l'overlay ***//
-overlay.addEventListener('click', closePopup);
+overlay.addEventListener('click', function(event) {
+    // Vérifie si le clic a eu lieu à l'intérieur de la pop-up
+    if (event.target === overlay) {
+        closePopup();
+    }
+});
 
 function closePopup() {
     pannel.classList.remove('open');
