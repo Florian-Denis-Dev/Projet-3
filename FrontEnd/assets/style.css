@@ -305,6 +305,10 @@ button:focus {
 .modification {
 	display: none;
 }
+
+.modification.open {
+    display: unset;
+}
 /*** style box pop-up ***/
 #gallery-modification {
 	max-width: 420px;

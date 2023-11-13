@@ -1,15 +1,29 @@
 // *** ouverture de la pop-up **///
 const modifier = document.querySelector('.modifier');
+const pannel = document.querySelector('.modification');
+const overlay = document.querySelector('.overlay');
+
 modifier.addEventListener('click', function(){
-    const pannel = document.querySelector('.modification');
-    pannel.style.display = 'unset';
+    pannel.classList.add('open');
 })
+
 //*** fermeture de la pop-up ***//
 const closePannel = document.querySelector('.close-pannel');
-closePannel.addEventListener('click', () => {
-    const pannel = document.querySelector('.modification');
-    pannel.style.display = 'none';
-})
+closePannel.addEventListener('click', closePopup);
+
+//*** fermeture de la pop-up avec la touche Échap ***//
+window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closePopup();
+    }
+});
+
+//*** fermeture de la pop-up en cliquant sur l'overlay ***//
+overlay.addEventListener('click', closePopup);
+
+function closePopup() {
+    pannel.classList.remove('open');
+}
 //*** function apparition photos***/
 
 // Sélection de la galerie dans le DOM
