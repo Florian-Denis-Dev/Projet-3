@@ -51,3 +51,27 @@ function addToHTML(data) {
 }
 // Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML
 getData().then(data => addToHTML(data));
+
+/** ajouter photos  **/
+
+// Sélectionnez le bouton dans le DOM
+const addButton = document.getElementById('ajout');
+
+// Sélectionnez les éléments à afficher
+const hiddenElements = document.querySelectorAll('.hidden');
+
+// Sélection des éléments à supprimer
+const visibleElements = document.querySelectorAll('.visible')
+
+// Ajoutez un écouteur d'événements au bouton
+addButton.addEventListener('click', function() {
+    // Effacez la galerie
+    modification.innerHTML = '';
+    // Parcourez chaque élément et changez leur style display
+    visibleElements.forEach(function(element){
+        element.style.display = 'none';
+    });
+    hiddenElements.forEach(function(element) {
+        element.style.display = 'block';
+    });
+});

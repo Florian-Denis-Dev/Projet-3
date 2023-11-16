@@ -274,6 +274,7 @@ button:focus {
     justify-content: center;
     align-items: center;
 }
+
 .pannel {
 	background-color: white;
 	border-radius: 10px;
@@ -318,4 +319,20 @@ button:focus {
 width: 78px;
 margin: 3px;
 align-items: flex-start;
+}
+/** style ajout **/
+.hidden {
+	display: none;
+	flex-direction: column;
+    align-items: center;
+}
+.ajout-photo{
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+.ajout-text {
+	display:flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
