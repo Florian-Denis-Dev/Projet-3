@@ -326,6 +326,10 @@ align-items: flex-start;
 	flex-direction: column;
     align-items: center;
 }
+.ajout-photo svg{
+	align-self: center;
+	padding: 0;
+}
 .ajout-photo{
 	display: flex;
 	flex-direction: column;
@@ -335,4 +339,8 @@ align-items: flex-start;
 	display:flex;
 	flex-direction: column;
 	align-items: flex-start;
+	padding-bottom: 47px;
+}
+#categorie {
+	width: 100%;
 }
