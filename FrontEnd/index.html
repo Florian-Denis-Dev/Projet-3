@@ -77,22 +77,24 @@
 
 								<p class="paragraphe">jpg, png : 4mo max</p>
 							</div>
-							<form class="ajout-text">
+							<form class="ajout-text" action="#" method="post">
 								<label for="titre">Titre</label>
 								<input id="titre" type="text">
 								<label for="categorie">Catégorie</label>
 								<select id="categorie">
 									<!-- appel des categorie via fetch -->
 								</select>
+								<div id="line"></div>
+								<div class="hidden">
+									<input type="submit" id="valider" value="Valider">
+								</div>
 							</form>
 						</div>
 						<div id="line"></div>
 						<div class="visible">
 							<button type="button" id="ajout" role="button">ajouter une photo</button>
 						</div>
-						<div class="hidden">
-							<input type="submit" id="valider" value="Valider">
-						</div>
+
 					</div>
 					
 				</div>
