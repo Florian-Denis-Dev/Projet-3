@@ -81,7 +81,9 @@ function createFilterButtons(data) {
 
 // Appel de la fonction getData et utilisation des données reçues 
 // pour appeler addToHTML  et createFilterButtons
-getData().then(data => {
+async function generateList (){getData().then(data => {
   addToHTML(data);
   createFilterButtons(data);
-});
+})}; 
+
+generateList();

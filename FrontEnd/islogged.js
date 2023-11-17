@@ -14,5 +14,5 @@ function checkToken() {
 }
 
 // Appelez la fonction checkToken lorsque la page est chargée
-window.addEventListener('DOMContentLoaded', checkToken);
+checkToken();
 

@@ -41,7 +41,7 @@ async function getData() {
   return data;
 }
 // Fonction pour ajouter les images et descriptions à index.html
-function addToHTML(data) {
+function addToHTMLpopUp(data) {
   data.forEach(item => {
       // Ajouter une image 
       const img = document.createElement('img');
@@ -50,7 +50,7 @@ function addToHTML(data) {
   });
 }
 // Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML
-getData().then(data => addToHTML(data));
+getData().then(data => addToHTMLpopUp(data));
 
 /** ajouter photos  **/
 

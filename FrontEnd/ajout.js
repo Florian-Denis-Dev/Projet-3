@@ -40,3 +40,4 @@ async function getCategories() {
       console.log('Aucun fichier sélectionné');
     }
   });
+  
