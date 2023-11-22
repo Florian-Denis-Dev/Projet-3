@@ -47,6 +47,20 @@ function addToHTMLpopUp(data) {
       const img = document.createElement('img');
       img.src = item.imageUrl;
       modification.appendChild(img);
+      // Ajouter un élément span avec un texte "x" au-dessus de chaque image
+      const span = document.createElement('span');
+      span.innerText = 'x';
+      span.classList.add('x-span');
+      img.parentNode.insertBefore(span, img);
+      // Ajouter un gestionnaire d'événements click à chaque élément span
+      span.addEventListener('click', function() {
+        img.remove();
+        span.remove();
+          // Envoyer une requête DELETE à l'API pour supprimer l'image
+          fetch(`http://localhost:5678/api/works/{id}`, {
+              method: 'DELETE'
+          });
+      });
   });
 }
 // Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML
