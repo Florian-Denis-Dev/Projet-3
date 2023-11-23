@@ -40,28 +40,26 @@ async function getData() {
   const data = await response.json();
   return data;
 }
-// Fonction pour ajouter les images et descriptions à index.html
+
 function addToHTMLpopUp(data) {
-  data.forEach(item => {
-      // Ajouter une image 
-      const img = document.createElement('img');
-      img.src = item.imageUrl;
-      modification.appendChild(img);
-      // Ajouter un élément span avec un texte "x" au-dessus de chaque image
-      const span = document.createElement('span');
-      span.innerText = 'x';
-      span.classList.add('x-span');
-      img.parentNode.insertBefore(span, img);
-      // Ajouter un gestionnaire d'événements click à chaque élément span
-      span.addEventListener('click', function() {
-        img.remove();
-        span.remove();
-          // Envoyer une requête DELETE à l'API pour supprimer l'image
-          fetch(`http://localhost:5678/api/works/{id}`, {
-              method: 'DELETE'
-          });
-      });
-  });
+    data.forEach(item => {
+        // Ajouter une image 
+        const img = document.createElement('img');
+        img.src = item.imageUrl;
+        modification.appendChild(img);
+        // Ajouter un élément span avec un texte "x" au-dessus de chaque image
+        const span = document.createElement('span');
+        span.innerText = 'x';
+        span.classList.add('x-span');
+        img.parentNode.insertBefore(span, img);
+        // Ajouter un gestionnaire d'événements click à chaque élément span
+        span.addEventListener('click', function() {
+            img.remove();
+            span.remove();
+            // Supprimer l'image via l'API
+            deleteImage(item.id);
+        });
+    });
 }
 // Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML
 getData().then(data => addToHTMLpopUp(data));
