@@ -40,7 +40,7 @@ async function getData() {
   const data = await response.json();
   return data;
 }
-// Fonction pour ajouter les images et descriptions à index.html
+
 function addToHTMLpopUp(data) {
     data.forEach(item => {
         // Ajouter une image 
