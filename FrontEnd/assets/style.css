@@ -344,6 +344,8 @@ align-items: flex-start;
 #categorie {
 	width: 100%;
 }
-.x-span {
-	color: black;
+.svg-delete {
+	position: relative;
+	top: 0;
+	right: 0;
 }
