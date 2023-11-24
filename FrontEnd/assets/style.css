@@ -321,6 +321,11 @@ margin: 3px;
 align-items: flex-start;
 }
 /** style ajout **/
+.visible {
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
 .hidden {
 	display: none;
 	flex-direction: column;
@@ -328,12 +333,28 @@ align-items: flex-start;
 }
 .ajout-photo svg{
 	align-self: center;
-	padding: 0;
+	padding-top: 13px;
+	width: 76px;
+	height: 76px;
+	flex-shrink: 0;
+}
+#addButton {
+	margin: 0;
+	background-color: #CBD6DC;
+	color: #306685;
+	border-style: hidden;
+}
+.ajout-photo .paragraphe {
+	padding: 10px;
 }
 .ajout-photo{
 	display: flex;
 	flex-direction: column;
     align-items: center;
+	background-color: #E8F1F6;
+	width: 420px;
+	height: 169px;
+	border-radius: 3px;
 }
 .ajout-text {
 	display:flex;

@@ -6,7 +6,7 @@ let projets = document.querySelector('#portfolio h2');
 let gallery = document.querySelector('.gallery');
 
 // Suppression du contenu HTML existant dans la galerie
-gallery.innerHTML = '';
+
 
 // créations de la div contenant les boutons
 let buttonContainer = document.createElement('div');
@@ -27,7 +27,7 @@ function addToHTML(data, categorie) {
   if (categorie) {
     filteredData = data.filter(item => item.category.name === categorie);
   }
-
+  gallery.innerHTML = '';
   // Ajouter chaque élément filtré au HTML
   filteredData.forEach(item => {
 
@@ -53,13 +53,13 @@ function addToHTML(data, categorie) {
 
 // Fonction pour créer les boutons de filtre
 function createFilterButtons(data) {
+  buttonContainer.innerHTML = '';
   // Obtenir toutes les catégories uniques
   let categories = [...new Set(data.map(item => item.category.name))];
   // Créer un bouton "Tous"
   let allButton = document.createElement('button');
   allButton.textContent = 'Tous';
   allButton.addEventListener('click', () => {
-    gallery.innerHTML = '';
     addToHTML(data); // Affiche toutes les catégories
   });
   buttonContainer.appendChild(allButton);
@@ -71,7 +71,6 @@ function createFilterButtons(data) {
 
 
   button.addEventListener('click', () => {
-    gallery.innerHTML = '';
     addToHTML(data, categorie);
     });
   buttonContainer.appendChild(button);
