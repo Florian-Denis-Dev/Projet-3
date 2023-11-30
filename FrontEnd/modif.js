@@ -40,20 +40,23 @@ async function getData() {
   const data = await response.json();
   return data;
 }
-
 function addToHTMLpopUp(data) {
     data.forEach(item => {
+        // Créer une div pour contenir l'image et l'icône SVG
+        const div = document.createElement('div');
+        div.className = 'image-container'; // Ajouter une classe à la div
+
         // Ajouter une image 
         const img = document.createElement('img');
         img.src = item.imageUrl;
-        modification.appendChild(img);
+        div.appendChild(img); // Ajouter l'image à la div
 
         // Créer un élément SVG
         const svgNS = "http://www.w3.org/2000/svg";  
         const svg = document.createElementNS(svgNS, "svg");
         const path = document.createElementNS(svgNS, "path");
 
-        // Configurer l'icône SVG (exemple d'une icône de croix)
+        // Configurer l'icône SVG
         svg.setAttributeNS(null, "viewBox", "0 0 9 11");
         svg.setAttributeNS(null, "width", "9");
         svg.setAttributeNS(null, "height", "11");
@@ -63,16 +66,20 @@ function addToHTMLpopUp(data) {
         path.setAttributeNS(null, "stroke-width", "1");
         path.setAttributeNS(null, "fill", "white");
 
-        // Ajouter le chemin à l'élément SVG et l'élément SVG à l'image
+        // Ajouter le chemin à l'élément SVG et l'élément SVG à la div
         svg.appendChild(path);
-        img.parentNode.insertBefore(svg, img);
+        div.appendChild(svg); // Ajouter le SVG à la div
+
+        // Ajouter la div à l'élément de modification
+        modification.appendChild(div);
 
         // Ajouter un gestionnaire d'événements click à chaque élément SVG
         svg.addEventListener('click', function() {
-            img.remove();
-            svg.remove();
+            div.remove(); // supprimer la div
             // Supprimer l'image via l'API
             deleteImage(item.id);
+            // Vider liste recreate lite pop up + recreate gallery js
+            // rappeler liste
         });
     });
 }

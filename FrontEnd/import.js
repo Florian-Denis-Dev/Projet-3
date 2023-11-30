@@ -33,7 +33,7 @@ form.addEventListener('submit', function(e) {
       closePopup(); // retirer class open pop up
       
       // Supprimez les données de votre galerie
-      gallery.innerHTML = '';
+     
 
       // Appelez votre fonction addToHTML
       generateList();

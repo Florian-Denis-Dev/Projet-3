@@ -313,12 +313,32 @@ button:focus {
 /*** style box pop-up ***/
 #gallery-modification {
 	max-width: 420px;
-	margin: 67px;
+	margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+}
+.visible div button {
+	margin-top: 20px;
 }
 #gallery-modification img{
 width: 78px;
 margin: 3px;
 align-items: flex-start;
+}
+
+.image-container {
+    position: relative; /* Fait de la div un conteneur de positionnement */
+}
+.image-container img {
+    display: block; /* Assure que l'image est un bloc pour éviter les marges indésirables */
+    width: 100%; /* Ajuste la largeur de l'image à la largeur de la div */
+    height: auto; /* Permet à l'image de conserver son aspect ratio */
+}
+.image-container svg {
+    position: absolute; /* Positionne l'icône SVG par rapport à la div */
+    top: 0px; /* Déplace l'icône SVG de 10px depuis le haut de la div */
+    right: 0px; /* Déplace l'icône SVG de 10px depuis la droite de la div */
 }
 /** style ajout **/
 .visible {
