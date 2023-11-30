@@ -8,8 +8,15 @@ modifier.addEventListener('click', function(){
 })
 
 //*** fermeture de la pop-up ***//
-const closePannel = document.querySelector('.close-pannel');
-closePannel.addEventListener('click', closePopup);
+function closePopup() {
+    pannel.classList.remove('open');
+}
+const closePannels = document.querySelectorAll('.close-pannel');
+closePannels.forEach(function(pannel) {
+    pannel.addEventListener('click', closePopup);
+});
+
+
 
 //*** fermeture de la pop-up avec la touche Échap ***//
 window.addEventListener('keydown', function(event) {
@@ -26,20 +33,6 @@ overlay.addEventListener('click', function(event) {
     }
 });
 
-//** Test return popup */
-document.querySelector('.return-pannel').addEventListener('click', function() {
-    visibleElements.forEach(function(element){
-        element.style.display = 'flex';
-    });
-    hiddenElements.forEach(function(element){
-        element.style.display = 'none';
-    });
-    getData().then(data => addToHTMLpopUp(data));
-});
-
-function closePopup() {
-    pannel.classList.remove('open');
-}
 //*** function apparition photos***/
 
 // Sélection de la galerie dans le DOM
@@ -120,3 +113,15 @@ addButton.addEventListener('click', function() {
         element.style.display = 'block';
     });
 });
+
+//** return popup */
+document.querySelector('.return-pannel').addEventListener('click', function() {
+    visibleElements.forEach(function(element){
+        element.style.display = 'flex';
+    });
+    hiddenElements.forEach(function(element){
+        element.style.display = 'none';
+    });
+    getData().then(data => addToHTMLpopUp(data));
+});
+
