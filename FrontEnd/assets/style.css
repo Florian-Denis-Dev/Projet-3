@@ -329,11 +329,13 @@ align-items: flex-start;
 
 .image-container {
     position: relative; /* Fait de la div un conteneur de positionnement */
+	gap: 4px;
 }
 .image-container img {
     display: block; /* Assure que l'image est un bloc pour éviter les marges indésirables */
     width: 100%; /* Ajuste la largeur de l'image à la largeur de la div */
-    height: auto; /* Permet à l'image de conserver son aspect ratio */
+    height: 100px; /* Permet de conserver la même hauteur pour chacune */
+
 }
 .image-container svg {
     position: absolute; /* Positionne l'icône SVG par rapport à la div */
