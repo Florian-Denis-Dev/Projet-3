@@ -219,6 +219,7 @@ div button {
 button:hover {
 	background-color: var(--green-color);
 	color:white;
+	cursor: pointer;
 }
 /** focus sur l'un **/
 button:focus {
@@ -391,4 +392,17 @@ align-items: flex-start;
 	position: relative;
 	top: 0;
 	right: 0;
+	flex-shrink: 0;
+	padding: 1px;
+	background-color: black;
+	border-radius: 10%;
+}
+
+.image-container svg {
+	padding: 4px;
+	margin: 10px;
+}
+
+.pannel svg :hover{
+	cursor: pointer;
 }
