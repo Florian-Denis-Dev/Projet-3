@@ -26,6 +26,17 @@ overlay.addEventListener('click', function(event) {
     }
 });
 
+//** Test return popup */
+document.querySelector('.return-pannel').addEventListener('click', function() {
+    visibleElements.forEach(function(element){
+        element.style.display = 'flex';
+    });
+    hiddenElements.forEach(function(element){
+        element.style.display = 'none';
+    });
+    getData().then(data => addToHTMLpopUp(data));
+});
+
 function closePopup() {
     pannel.classList.remove('open');
 }
