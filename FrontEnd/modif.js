@@ -10,6 +10,8 @@ modifier.addEventListener('click', function(){
 //*** fermeture de la pop-up ***//
 function closePopup() {
     pannel.classList.remove('open');
+    gallery.innerHTML = '';
+    generateList();
 }
 const closePannels = document.querySelectorAll('.close-pannel');
 closePannels.forEach(function(pannel) {
