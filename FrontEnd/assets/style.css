@@ -298,10 +298,11 @@ button:focus {
 	font-size: 26px;
 	font-weight: 400;
 }
-#line{
+.line{
 	background-color: #B3B3B3;
 	height: 1px;
 	width: 420px;
+	margin: 50px;
 }
 #ajout{
 	height: 36px;
@@ -356,6 +357,8 @@ align-items: flex-start;
 	flex-direction: column;
     align-items: center;
 }
+
+
 .ajout-photo svg{
 	align-self: center;
 	padding-top: 13px;
@@ -384,7 +387,7 @@ align-items: flex-start;
 .ajout-text {
 	display:flex;
 	flex-direction: column;
-	align-items: center;
+    align-items: stretch;
 	padding-bottom: 47px;
 }
 #categorie {
@@ -403,12 +406,21 @@ align-items: flex-start;
 #svg-retour-close {
 	display: flex;
 	justify-content: space-between;
-	
 }
 
 .image-container svg {
 	padding: 4px;
 	margin: 10px;
+}
+
+#ajout-hide {
+    display: flex;
+    flex-direction: column;
+}
+
+#valider-photo {
+	display: flex;
+	align-items: center;
 }
 
 .pannel svg :hover{
