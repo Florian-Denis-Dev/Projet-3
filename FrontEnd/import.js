@@ -3,10 +3,11 @@ const validateButton = document.getElementById('valider');
 const dialog = document.getElementById('dialog');
 const token = window.localStorage.getItem("token");
 const form = document.querySelector('.ajout-text');
+const fileInput = document.getElementById('imageUpload');
+
 // Ajoutez un écouteur d'événements au bouton
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-  const fileInput = document.getElementById('imageUpload');
   const file = fileInput.files[0];
   if (file) {
     // Créez un FormData pour stocker le fichier
@@ -45,3 +46,32 @@ form.addEventListener('submit', function(e) {
     console.log('Aucun fichier sélectionné');
   }
 });
+
+// Ajoutez un écouteur d'événements pour le changement de fichier
+fileInput.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      // Sélectionnez la div dans laquelle vous voulez afficher l'image
+      const imageDiv = document.querySelector('.ajout-photo');
+      // Effacez le contenu de la div
+      imageDiv.innerHTML = '';
+      // Créez une nouvelle image et définissez sa source sur les données du fichier
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      // Définissez la largeur et la hauteur de l'image
+      img.style.width = 'auto';
+      img.style.height = '169px';
+      // Ajoutez l'image à la div
+      imageDiv.appendChild(img);
+    
+      // Sélectionnez l'élément que vous souhaitez cacher
+      const elementToHide = document.getElementById('ajout-hide');
+      // Modifiez son style pour le cacher
+      elementToHide.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
