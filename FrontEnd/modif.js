@@ -112,7 +112,7 @@ addButton.addEventListener('click', function() {
         element.style.display = 'none';
     });
     hiddenElements.forEach(function(element) {
-        element.style.display = 'flex';
+        element.style.display = 'block';
     });
 });
 
