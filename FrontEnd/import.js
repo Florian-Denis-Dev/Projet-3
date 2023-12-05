@@ -38,6 +38,19 @@ form.addEventListener('submit', function(e) {
 
       // Appelez votre fonction addToHTML
       generateList();
+
+      // Réinitialisez les valeurs des champs du formulaire
+      document.getElementById('titre').value = '';
+      document.getElementById('categorie').value = '';
+      fileInput.value = '';
+
+      // Videz la div qui contient l'image
+      const imageDiv = document.querySelector('.ajout-photo-container');
+      imageDiv.innerHTML = '';
+
+      // Réinitialisez l'élément que vous souhaitez cacher
+      const elementToHide = document.getElementById('ajout-hide');
+      elementToHide.style.display = 'flex';
     })
     .catch(error => {
       console.error('Error:', error);
@@ -52,9 +65,9 @@ fileInput.addEventListener('change', function(e) {
   const file = e.target.files[0];
   if (file) {
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = e => {
       // Sélectionnez la div dans laquelle vous voulez afficher l'image
-      const imageDiv = document.querySelector('.ajout-photo');
+      const imageDiv = document.querySelector('.ajout-photo-container');
       // Effacez le contenu de la div
       imageDiv.innerHTML = '';
       // Créez une nouvelle image et définissez sa source sur les données du fichier
@@ -74,4 +87,3 @@ fileInput.addEventListener('change', function(e) {
     reader.readAsDataURL(file);
   }
 });
-
