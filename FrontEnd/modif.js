@@ -2,11 +2,9 @@
 const modifier = document.querySelector('.modifier');
 const pannel = document.querySelector('.modification');
 const overlay = document.querySelector('.overlay');
-
 modifier.addEventListener('click', function(){
     pannel.classList.add('open');
 })
-
 //*** fermeture de la pop-up ***//
 function closePopup() {
     pannel.classList.remove('open');
@@ -14,19 +12,16 @@ function closePopup() {
     generateList();
     returnPopUp();
 }
-
 const closePannels = document.querySelectorAll('.close-pannel');
 closePannels.forEach(function(pannel) {
     pannel.addEventListener('click', closePopup);
 });
-
 //*** fermeture de la pop-up avec la touche Échap ***//
 window.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closePopup();
     }
 });
-
 //*** fermeture de la pop-up en cliquant sur l'overlay ***//
 overlay.addEventListener('click', function(event) {
     if (event.target === overlay) {
@@ -49,11 +44,9 @@ function addToHTMLpopUp(data) {
         const img = document.createElement('img');
         img.src = item.imageUrl;
         div.appendChild(img); 
-        // Créer un élément SVG
         const svgNS = "http://www.w3.org/2000/svg";  
         const svg = document.createElementNS(svgNS, "svg");
         const path = document.createElementNS(svgNS, "path");
-        // Configurer l'icône SVG
         svg.setAttributeNS(null, "viewBox", "0 0 9 11");
         svg.setAttributeNS(null, "width", "9");
         svg.setAttributeNS(null, "height", "11");
@@ -78,7 +71,6 @@ getData().then(data => addToHTMLpopUp(data));
 const addButton = document.getElementById('ajout');
 const hiddenElements = document.querySelectorAll('.hidden');
 const visibleElements = document.querySelectorAll('.visible')
-
 addButton.addEventListener('click', function() {
     modification.innerHTML = '';
     visibleElements.forEach(function(element){
@@ -99,5 +91,4 @@ function returnPopUp() {
     });
     getData().then(data => addToHTMLpopUp(data));
 }
-
 document.querySelector('.return-pannel').addEventListener('click', returnPopUp);

@@ -1,4 +1,4 @@
-// deleteImage.js
+
 function deleteImage(id) {
     fetch(`http://localhost:5678/api/works/${id}`, {
         method: 'DELETE',
