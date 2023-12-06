@@ -12,13 +12,13 @@ function closePopup() {
     pannel.classList.remove('open');
     gallery.innerHTML = '';
     generateList();
+    returnPopUp();
 }
+
 const closePannels = document.querySelectorAll('.close-pannel');
 closePannels.forEach(function(pannel) {
     pannel.addEventListener('click', closePopup);
 });
-
-
 
 //*** fermeture de la pop-up avec la touche Échap ***//
 window.addEventListener('keydown', function(event) {
@@ -29,17 +29,13 @@ window.addEventListener('keydown', function(event) {
 
 //*** fermeture de la pop-up en cliquant sur l'overlay ***//
 overlay.addEventListener('click', function(event) {
-    // Vérifie si le clic a eu lieu à l'intérieur de la pop-up
     if (event.target === overlay) {
         closePopup();
     }
 });
 
 //*** function apparition photos***/
-
-// Sélection de la galerie dans le DOM
 let modification = document.querySelector('#gallery-modification');
-
 // Fonction pour récupérer les données de l'API
 async function getData() {
   const response = await fetch('http://localhost:5678/api/works'); // url de l'api
@@ -48,20 +44,15 @@ async function getData() {
 }
 function addToHTMLpopUp(data) {
     data.forEach(item => {
-        // Créer une div pour contenir l'image et l'icône SVG
         const div = document.createElement('div');
-        div.className = 'image-container'; // Ajouter une classe à la div
-
-        // Ajouter une image 
+        div.className = 'image-container';
         const img = document.createElement('img');
         img.src = item.imageUrl;
-        div.appendChild(img); // Ajouter l'image à la div
-
+        div.appendChild(img); 
         // Créer un élément SVG
         const svgNS = "http://www.w3.org/2000/svg";  
         const svg = document.createElementNS(svgNS, "svg");
         const path = document.createElementNS(svgNS, "path");
-
         // Configurer l'icône SVG
         svg.setAttributeNS(null, "viewBox", "0 0 9 11");
         svg.setAttributeNS(null, "width", "9");
@@ -71,21 +62,12 @@ function addToHTMLpopUp(data) {
         path.setAttributeNS(null, "stroke", "#000");
         path.setAttributeNS(null, "stroke-width", "0.1");
         path.setAttributeNS(null, "fill", "white");
-
-        // Ajouter le chemin à l'élément SVG et l'élément SVG à la div
         svg.appendChild(path);
-        div.appendChild(svg); // Ajouter le SVG à la div
-
-        // Ajouter la div à l'élément de modification
+        div.appendChild(svg);
         modification.appendChild(div);
-
-        // Ajouter un gestionnaire d'événements click à chaque élément SVG
         svg.addEventListener('click', function() {
-            div.remove(); // supprimer la div
-            // Supprimer l'image via l'API
+            div.remove();
             deleteImage(item.id);
-            // Vider liste recreate lite pop up + recreate gallery js
-            // rappeler liste
         });
     });
 }
@@ -93,21 +75,12 @@ function addToHTMLpopUp(data) {
 getData().then(data => addToHTMLpopUp(data));
 
 /** ajouter photos  **/
-
-// Sélectionnez le bouton dans le DOM
 const addButton = document.getElementById('ajout');
-
-// Sélectionnez les éléments à afficher
 const hiddenElements = document.querySelectorAll('.hidden');
-
-// Sélection des éléments à supprimer
 const visibleElements = document.querySelectorAll('.visible')
 
-// Ajoutez un écouteur d'événements au bouton
 addButton.addEventListener('click', function() {
-    // Effacez la galerie
     modification.innerHTML = '';
-    // Parcourez chaque élément et changez leur style display
     visibleElements.forEach(function(element){
         element.style.display = 'none';
     });
@@ -117,7 +90,7 @@ addButton.addEventListener('click', function() {
 });
 
 //** return popup */
-document.querySelector('.return-pannel').addEventListener('click', function() {
+function returnPopUp() {
     visibleElements.forEach(function(element){
         element.style.display = 'flex';
     });
@@ -125,5 +98,6 @@ document.querySelector('.return-pannel').addEventListener('click', function() {
         element.style.display = 'none';
     });
     getData().then(data => addToHTMLpopUp(data));
-});
+}
 
+document.querySelector('.return-pannel').addEventListener('click', returnPopUp);
