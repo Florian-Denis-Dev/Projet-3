@@ -10,19 +10,19 @@ function closePopup() {
     pannel.classList.remove('open');
     gallery.innerHTML = '';
     generateList();
-    returnPopUp();
+    closePopup2();
 }
 const closePannels = document.querySelectorAll('.close-pannel');
 closePannels.forEach(function(pannel) {
     pannel.addEventListener('click', closePopup);
 });
-//*** fermeture de la pop-up avec la touche Échap ***//
+//*** via Échap ***//
 window.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closePopup();
     }
 });
-//*** fermeture de la pop-up en cliquant sur l'overlay ***//
+//*** via l'overlay ***//
 overlay.addEventListener('click', function(event) {
     if (event.target === overlay) {
         closePopup();
@@ -31,9 +31,8 @@ overlay.addEventListener('click', function(event) {
 
 //*** function apparition photos***/
 let modification = document.querySelector('#gallery-modification');
-// Fonction pour récupérer les données de l'API
 async function getData() {
-  const response = await fetch('http://localhost:5678/api/works'); // url de l'api
+  const response = await fetch('http://localhost:5678/api/works');
   const data = await response.json();
   return data;
 }
@@ -64,7 +63,6 @@ function addToHTMLpopUp(data) {
         });
     });
 }
-// Appeler la fonction getData et utiliser les données reçues pour appeler addToHTML
 getData().then(data => addToHTMLpopUp(data));
 
 /** ajouter photos  **/
@@ -92,3 +90,15 @@ function returnPopUp() {
     getData().then(data => addToHTMLpopUp(data));
 }
 document.querySelector('.return-pannel').addEventListener('click', returnPopUp);
+
+//** close popup */
+function closePopup2(){
+    modification.innerHTML = ''; 
+    visibleElements.forEach(function(element){
+        element.style.display = 'flex';
+    });
+    hiddenElements.forEach(function(element) {
+        element.style.display = 'none';
+    });
+    getData().then(data => addToHTMLpopUp(data));
+}
