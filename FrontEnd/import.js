@@ -56,3 +56,23 @@ fileInput.addEventListener('change', function(e) {
     reader.readAsDataURL(file);
   }
 });
+  /** Changement de couleur valider */
+
+  function checkFormAndFile() {
+    var isFormFilled = Array.from(form.elements).every(function(element) {
+      return element.value !== '';
+    });
+    var isFileSelected = fileInput.files.length > 0;
+  
+    if (isFormFilled && isFileSelected) {
+      validateButton.style.backgroundColor = 'var(--green-color)';
+      validateButton.style.color = 'white';
+    } else {
+      validateButton.style.backgroundColor = 'var(--gray-color)';
+      validateButton.style.color = 'white'; 
+    }
+  }
+  
+  form.addEventListener('input', checkFormAndFile);
+  fileInput.addEventListener('change', checkFormAndFile);
+  
