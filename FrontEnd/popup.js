@@ -1,11 +1,13 @@
-// *** ouverture de la pop-up **///
 const modifier = document.querySelector('.modifier');
 const pannel = document.querySelector('.modification');
 const overlay = document.querySelector('.overlay');
+
+/** Ouverture des pop-up */
 modifier.addEventListener('click', function(){
     pannel.classList.add('open');
 })
-//*** fermeture de la pop-up ***//
+
+//** fermeture des pop-up */
 function closePopup() {
     pannel.classList.remove('open');
     gallery.innerHTML = '';
@@ -29,7 +31,31 @@ overlay.addEventListener('click', function(event) {
     }
 });
 
-//*** function apparition photos***/
+//** return popup */
+function returnPopUp() {
+    visibleElements.forEach(function(element){
+        element.style.display = 'flex';
+    });
+    hiddenElements.forEach(function(element){
+        element.style.display = 'none';
+    });
+    getData().then(data => addToHTMLpopUp(data));
+}
+document.querySelector('.return-pannel').addEventListener('click', returnPopUp);
+
+//** retour sur la pop up principale */
+function closePopup2(){
+    modification.innerHTML = ''; 
+    visibleElements.forEach(function(element){
+        element.style.display = 'flex';
+    });
+    hiddenElements.forEach(function(element) {
+        element.style.display = 'none';
+    });
+    getData().then(data => addToHTMLpopUp(data));
+}
+
+//*** Apparition des photos dans la pop-up */
 let modification = document.querySelector('#gallery-modification');
 async function getData() {
   const response = await fetch('http://localhost:5678/api/works');
@@ -65,7 +91,26 @@ function addToHTMLpopUp(data) {
 }
 getData().then(data => addToHTMLpopUp(data));
 
-/** ajouter photos  **/
+/** suppression photos */
+function deleteImage(id) {
+    fetch(`http://localhost:5678/api/works/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log('Image deleted successfully');
+    })
+    .catch(error => {
+        console.log('There was a problem with the fetch operation: ' + error.message);
+    });
+  }
+  
+/** Ouverture 2eme pop-up  */
 const addButton = document.getElementById('ajout');
 const hiddenElements = document.querySelectorAll('.hidden');
 const visibleElements = document.querySelectorAll('.visible')
@@ -78,27 +123,3 @@ addButton.addEventListener('click', function() {
         element.style.display = 'block';
     });
 });
-
-//** return popup */
-function returnPopUp() {
-    visibleElements.forEach(function(element){
-        element.style.display = 'flex';
-    });
-    hiddenElements.forEach(function(element){
-        element.style.display = 'none';
-    });
-    getData().then(data => addToHTMLpopUp(data));
-}
-document.querySelector('.return-pannel').addEventListener('click', returnPopUp);
-
-//** close popup */
-function closePopup2(){
-    modification.innerHTML = ''; 
-    visibleElements.forEach(function(element){
-        element.style.display = 'flex';
-    });
-    hiddenElements.forEach(function(element) {
-        element.style.display = 'none';
-    });
-    getData().then(data => addToHTMLpopUp(data));
-}

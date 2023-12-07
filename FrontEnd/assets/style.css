@@ -476,3 +476,9 @@ select {
 #contact input:hover {
 	cursor: pointer;
 }
+.svg-delete:hover{
+	cursor: pointer;
+}
+#valider:hover{
+	cursor: pointer;
+}

@@ -1,18 +1,15 @@
-// --------------- Chargement du contenu -----------//
 let projets = document.querySelector('#portfolio h2');
 let gallery = document.querySelector('.gallery');
 let buttonContainer = document.createElement('div');
 buttonContainer.className = 'button-container';
 projets.appendChild(buttonContainer);
 
-// Fonction pour récupérer les données de l'API
+//** Ajout des image et de leurs descriptions */
 async function getData() {
   const response = await fetch('http://localhost:5678/api/works');
   const data = await response.json();
   return data;
 }
-
-// Fonction pour ajouter les images et descriptions à index.html
 function addToHTML(data, categorie) {
   let filteredData = data;
   if (categorie) {
@@ -31,9 +28,7 @@ function addToHTML(data, categorie) {
   });
 }
 
-//------------------ boutons filtres ---------------//
-
-// Fonction pour créer les boutons de filtre
+//** Création des boutons de filtres */
 function createFilterButtons(data) {
   buttonContainer.innerHTML = '';
   let categories = [...new Set(data.map(item => item.category.name))];
@@ -56,5 +51,4 @@ async function generateList (){getData().then(data => {
   addToHTML(data);
   createFilterButtons(data);
 })}; 
-
 generateList();

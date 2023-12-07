@@ -3,6 +3,7 @@ const dialog = document.getElementById('dialog');
 const token = window.localStorage.getItem("token");
 const form = document.querySelector('.ajout-text');
 const fileInput = document.getElementById('imageUpload');
+
 /** Formulaire de téléchargement image vers api */
 form.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -39,6 +40,7 @@ form.addEventListener('submit', function(e) {
     console.log('Aucun fichier sélectionné');
   }
 });
+
 /** Preview de l'image */
 fileInput.addEventListener('change', function(e) {
   const file = e.target.files[0];
@@ -58,8 +60,25 @@ fileInput.addEventListener('change', function(e) {
     reader.readAsDataURL(file);
   }
 });
-  /** Changement de couleur valider */
 
+/** insertion des catégories via api  */
+async function getCategories() {
+  const response = await fetch('http://localhost:5678/api/categories');
+  const data = await response.json();
+  return data;
+}
+function addToSelect(data) {
+const select = document.querySelector('#categorie');
+data.forEach(item => {
+  const option = document.createElement('option');
+  option.value = item.id;
+  option.text = item.name;
+  select.add(option);
+});
+}
+getCategories().then(data => addToSelect(data));
+
+/** Changement de couleur du bouton valider */
 function checkFormAndFile() {
   var isFormFilled = Array.from(form.elements).every(function(element) {
     return element.value !== '';
@@ -77,26 +96,7 @@ function checkFormAndFile() {
 form.addEventListener('input', checkFormAndFile);
 fileInput.addEventListener('change', checkFormAndFile);
 
-// Fonction pour récupérer les données de l'API
-async function getCategories() {
-  const response = await fetch('http://localhost:5678/api/categories'); // url de l'api
-  const data = await response.json();
-  return data;
-}
-
-// Fonction pour ajouter les catégories au select
-function addToSelect(data) {
-const select = document.querySelector('#categorie');
-data.forEach(item => {
-  const option = document.createElement('option');
-  option.value = item.id;
-  option.text = item.name;
-  select.add(option);
-});
-}
-getCategories().then(data => addToSelect(data));
-
-/** Function pour ajouter des photos */
+/** ajouter des nouvelles photos */
 document.getElementById('addButton').addEventListener('click', function() {
 document.getElementById('imageUpload').click();
 });
@@ -108,22 +108,3 @@ if (file) {
   console.log('Aucun fichier sélectionné');
 }
 });
-
-/** Delete image */
-function deleteImage(id) {
-  fetch(`http://localhost:5678/api/works/${id}`, {
-      method: 'DELETE',
-      headers: {
-          'Authorization': `Bearer ${token}`
-      }
-  })
-  .then(response => {
-      if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      console.log('Image deleted successfully');
-  })
-  .catch(error => {
-      console.log('There was a problem with the fetch operation: ' + error.message);
-  });
-}
