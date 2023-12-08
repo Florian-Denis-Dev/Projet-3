@@ -1,9 +1,8 @@
 let projets = document.querySelector('#portfolio h2');
 let gallery = document.querySelector('.gallery');
-
-//** Création du conteneur de boutons */
-function createButtonContainer() {
-  let buttonContainer = document.createElement('div');
+let buttonContainer = document.createElement('div');
+//** Création du container des boutons */
+function createButtonContainer () {
   buttonContainer.className = 'button-container';
   projets.appendChild(buttonContainer);
 }
