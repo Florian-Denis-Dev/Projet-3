@@ -1,8 +1,13 @@
 let projets = document.querySelector('#portfolio h2');
 let gallery = document.querySelector('.gallery');
-let buttonContainer = document.createElement('div');
-buttonContainer.className = 'button-container';
-projets.appendChild(buttonContainer);
+
+//** Création du conteneur de boutons */
+function createButtonContainer() {
+  let buttonContainer = document.createElement('div');
+  buttonContainer.className = 'button-container';
+  projets.appendChild(buttonContainer);
+}
+createButtonContainer();
 
 //** Ajout des image et de leurs descriptions */
 async function getData() {
