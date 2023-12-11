@@ -349,12 +349,12 @@ align-items: flex-start;
     right: 0px; /* Déplace l'icône SVG de 10px depuis la droite de la div */
 }
 /** style ajout **/
-.visible {
+.popup-liste {
 	display: flex;
 	flex-direction: column;
     align-items: center;
 }
-.hidden {
+.popup-form {
 	display: none;
 	flex-direction: column;
     align-items: center;
