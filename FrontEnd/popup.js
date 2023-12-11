@@ -1,6 +1,9 @@
 const modifier = document.querySelector('.modifier');
 const pannel = document.querySelector('.modification');
 const overlay = document.querySelector('.overlay');
+const addButton = document.getElementById('ajout');
+const popListe = document.querySelector('.popup-liste');
+const popForm = document.querySelector('.popup-form');
 
 //*** Apparition des photos dans la pop-up */
 let modification = document.querySelector('#gallery-modification');
@@ -38,9 +41,27 @@ function addToHTMLpopUp(data) {
 }
 getData().then(data => addToHTMLpopUp(data));
 
-/** Ouverture des pop-up */
+/** fonction pop-up */
+function openPopup1() {
+    popListe.style.display = 'flex';
+    popForm.style.display = 'none';
+    modification.innerHTML = '';
+    getData().then(data => addToHTMLpopUp(data));
+}
+
+function openPopup2() {
+    popForm.style.display = 'flex';
+    popListe.style.display = 'none';
+}
+
+// Ouverture des pop ups
 modifier.addEventListener('click', function(){
     pannel.classList.add('open');
+    openPopup1();
+})
+
+addButton.addEventListener('click', function(){
+    openPopup2();
 })
 
 //** fermeture des pop-up */
@@ -48,7 +69,6 @@ function closePopup() {
     pannel.classList.remove('open');
     gallery.innerHTML = '';
     generateList();
-    closePopup2();
 }
 const closePannels = document.querySelectorAll('.close-pannel');
 closePannels.forEach(function(pannel) {
@@ -68,43 +88,7 @@ overlay.addEventListener('click', function(event) {
 });
 
 //** return popup */
-function returnPopUp() {
-    visibleElements.forEach(function(element){
-        element.style.display = 'flex';
-    });
-    hiddenElements.forEach(function(element){
-        element.style.display = 'none';
-    });
-    getData().then(data => addToHTMLpopUp(data));
-}
-document.querySelector('.return-pannel').addEventListener('click', returnPopUp);
-
-//** retour sur la pop up principale */
-function closePopup2(){
-    modification.innerHTML = ''; 
-    visibleElements.forEach(function(element){
-        element.style.display = 'flex';
-    });
-    hiddenElements.forEach(function(element) {
-        element.style.display = 'none';
-    });
-    getData().then(data => addToHTMLpopUp(data));
-}
-  
-/** Ouverture 2eme pop-up  */
-const addButton = document.getElementById('ajout');
-const hiddenElements = document.querySelectorAll('.hidden');
-const visibleElements = document.querySelectorAll('.visible')
-
-addButton.addEventListener('click', function() {
-    modification.innerHTML = '';
-    visibleElements.forEach(function(element){
-        element.style.display = 'none';
-    });
-    hiddenElements.forEach(function(element) {
-        element.style.display = 'block';
-    });
-});
+document.querySelector('.return-pannel').addEventListener('click', openPopup1);
 
 /** suppression photos */
 function deleteImage(id) {

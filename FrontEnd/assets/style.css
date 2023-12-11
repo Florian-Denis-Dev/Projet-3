@@ -348,18 +348,18 @@ align-items: flex-start;
     top: 0px; /* Déplace l'icône SVG de 10px depuis le haut de la div */
     right: 0px; /* Déplace l'icône SVG de 10px depuis la droite de la div */
 }
-/** style ajout **/
-.visible {
+/** style pop-up **/
+
+.popup-liste {
 	display: flex;
 	flex-direction: column;
     align-items: center;
 }
-.hidden {
+.popup-form {
 	display: none;
 	flex-direction: column;
     align-items: center;
 }
-
 
 .ajout-photo svg{
 	align-self: center;
