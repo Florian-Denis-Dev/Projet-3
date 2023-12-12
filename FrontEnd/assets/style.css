@@ -263,9 +263,24 @@ button:focus {
 
 .userLogged .modifier {
 	display: inline;
+	margin: 10px;
+}
+.test {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	justify-content: center;
+}
+.button-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
 }
 
+.button-container button {
+    margin: 10px;
 
+}
 
 /** modifier les images **/
 .overlay{
@@ -334,19 +349,19 @@ align-items: flex-start;
 }
 
 .image-container {
-    position: relative; /* Fait de la div un conteneur de positionnement */
+    position: relative;
 	gap: 4px;
 }
 .image-container img {
-    display: block; /* Assure que l'image est un bloc pour éviter les marges indésirables */
-    width: 100%; /* Ajuste la largeur de l'image à la largeur de la div */
-    height: 100px; /* Permet de conserver la même hauteur pour chacune */
+    display: block;
+    width: 100%;
+    height: 100px;
 
 }
 .image-container svg {
-    position: absolute; /* Positionne l'icône SVG par rapport à la div */
-    top: 0px; /* Déplace l'icône SVG de 10px depuis le haut de la div */
-    right: 0px; /* Déplace l'icône SVG de 10px depuis la droite de la div */
+    position: absolute;
+    top: 0px; 
+    right: 0px; 
 }
 /** style ajout **/
 .popup-liste {
