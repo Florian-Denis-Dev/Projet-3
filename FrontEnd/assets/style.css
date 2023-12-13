@@ -110,6 +110,9 @@ a {
 a:hover {
 	color: var(--brown-color);
 }
+.stronger {
+	font-weight: 600;
+}
 
 #introduction {
 	display: flex;
@@ -199,6 +202,10 @@ footer nav ul {
 	margin: 2em
 }
 
+#footer-login {
+	padding-top: 200px;
+}
+
 /** partie boutons filtres ***/
 /** before **/
 button {
@@ -265,11 +272,12 @@ button:focus {
 	display: inline;
 	margin: 10px;
 }
-.test {
+.titre-projet {
 	display: flex;
 	flex-direction: row;
 	align-items: baseline;
 	justify-content: center;
+	padding-top: 100px;
 }
 .button-container {
 	display: flex;

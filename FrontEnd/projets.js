@@ -51,8 +51,13 @@ function createFilterButtons(data) {
   buttonContainer.appendChild(button);
   });
 }
-async function generateList (){getData().then(data => {
-  addToHTML(data);
-  createFilterButtons(data);
-})}; 
 generateList();
+
+async function generateList (){
+  getData().then(data => {
+    addToHTML(data);
+    if (!window.localStorage.getItem("token")) {
+      createFilterButtons(data);
+    }
+  });
+}; 
