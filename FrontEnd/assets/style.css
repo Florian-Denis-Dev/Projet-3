@@ -236,6 +236,9 @@ button:focus {
 	color: white;
 }
 
+.hidden {
+	visibility: hidden;
+}
 /** mode edition **/
 .userLogged {
 	padding-top: 50px;

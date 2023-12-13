@@ -56,8 +56,12 @@ generateList();
 async function generateList (){
   getData().then(data => {
     addToHTML(data);
-    if (!window.localStorage.getItem("token")) {
-      createFilterButtons(data);
+    createFilterButtons(data);
+    if (window.localStorage.getItem("token")) {
+      let buttons = document.querySelectorAll('.button-container button');
+      buttons.forEach(button => {
+        button.classList.add('hidden'); // Ajoutez la classe 'hidden' à chaque bouton
+      });
     }
   });
 }; 
