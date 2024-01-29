@@ -60,7 +60,7 @@ async function generateList (){
     if (window.localStorage.getItem("token")) {
       let buttons = document.querySelectorAll('.button-container button');
       buttons.forEach(button => {
-        button.classList.add('hidden'); // Ajoutez la classe 'hidden' à chaque bouton
+        button.classList.add('hidden'); // Ajoutes la classe 'hidden' à chaque bouton
       });
     }
   });
