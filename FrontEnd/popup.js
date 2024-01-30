@@ -103,6 +103,8 @@ function deleteImage(id) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         console.log('Image deleted successfully');
+        gallery.innerHTML = '';
+        generateList();
     })
     .catch(error => {
         console.log('There was a problem with the fetch operation: ' + error.message);
